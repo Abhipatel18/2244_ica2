@@ -12,7 +12,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 sh 'docker stop abhipatel2002/2244_ica2:latest || true && docker rm abhipatel2002/2244_ica2:latest || true'
-                sh 'docker run --name abhipatel2002/2244_ica2:latest -d -p 8082:80 abhipatel2002/2244_ica2:latest'
+                sh 'docker run -d -p 8082:80 abhipatel2002/2244_ica2:latest'
             }
         }
         stage('Test') {
