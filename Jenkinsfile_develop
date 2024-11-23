@@ -15,8 +15,8 @@ pipeline {
 
         stage('Build image') {
             steps {
-                sh 'docker build -t abhipatel18/2244_ica2 .'
-                sh 'docker run --name 2244_ica2 -d -p 8081:80 abhipatel18/2244_ica2'
+                sh 'docker build -t mywebsite .'
+                sh 'docker run -d -p 8081:80 mywebsite'
             }
         }
 
