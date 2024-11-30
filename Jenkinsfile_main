@@ -9,21 +9,10 @@ pipeline {
                 sh 'docker pull abhipatel2002/2244_ica2:latest'
             }
         }
-        stage('Stop and Remove Old Container') {
-            steps {
-                script {
-                    sh '''
-                    if [ $(docker ps -aq -f name=practice_2) ]; then
-                        docker stop practice_2 || true
-                        docker rm practice_2 || true
-                    fi
-                    '''
-                }
-            }
-        }
         stage('Run Container') {
             steps {
-                sh 'docker run -d -p 8082:80 abhipatel2002/2244_ica2:latest'
+                sh 'docker stop website || true && docker rm website || true'
+                sh 'docker run --name website -d -p 8082:80 abhipatel2002/2244_ica2:latest'
             }
         }
         stage('Test') {
